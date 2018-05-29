@@ -46,7 +46,9 @@ Func AutoChangeOn()
    WaitForRelease("11") ;CTRL
    If (WinExists("Interaction Client: .NET Edition")) Then
 	  $aININPos = OpenININConfig()
+	  $aMPos = MouseGetPos()
 	  MouseClick("left", $aININPos[0] + $aININPos[2] - 402, $aININPos[1] + 182, 1, 0)
+	  MouseMove($aMPos[0], $aMPos[1], 0)
 	  Send("{ENTER}")
    EndIf
 EndFunc
@@ -56,7 +58,9 @@ Func AutoChangeOff()
    WaitForRelease("11") ;CTRL
    If (WinExists("Interaction Client: .NET Edition")) Then
 	  $aININPos = OpenININConfig()
+	  $aMPos = MouseGetPos()
 	  MouseClick("left", $aININPos[0] + $aININPos[2] - 402, $aININPos[1] + 156, 1, 0)
+	  MouseMove($aMPos[0], $aMPos[1], 0)
 	  Send("{ENTER}")
    EndIf
 EndFunc
@@ -78,5 +82,7 @@ Func WaitForRelease($hKey)
 EndFunc
 
 Func RightClickIcon()
+   $aMPos = MouseGetPos()
    MouseClick("right", $aPos[0] + $aPos[2] / 3 * 2 - 155, $aPos[1] + $aPos[3] - 20, 1, 0)
+   MouseMove($aMPos[0], $aMPos[1], 0)
 EndFunc
