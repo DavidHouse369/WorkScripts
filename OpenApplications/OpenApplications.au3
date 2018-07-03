@@ -39,38 +39,9 @@ While Not WaitForWindow("TCC ECM Service Desk Officer", False, 30, False)
 WEnd
 
 
-; Open CES in green and P&R in purple
-Run(@ComSpec & " /c " & '"D:\Users\dsh\Desktop\TechOne.lnk"', @TempDir, @SW_HIDE)
-If WaitForWindow("TCC Service Desk Officer - TechnologyOne Enterprise Suite", True, 15, True) Then
-   WinSetState("TCC Service Desk Officer - TechnologyOne Enterprise Suite", "", @SW_RESTORE)
-   WinMove("TCC Service Desk Officer - TechnologyOne Enterprise Suite", "", $aPos[0] + $aPos[2] /3 * 2 + 555, $aPos[1], $aPos[2] /3 - 555, $aPos[3])
-   Send("!t")
-   Sleep(300)
-   Send("p")
-   Sleep(3000)
-   Send("g")
-   Sleep(300)
-   Send("{RIGHT}")
-   Sleep(300)
-   Send("t")
-   Sleep(300)
-   Send("{TAB 5}")
-   Sleep(300)
-   Send("Misty Rose")
-   Send("^s")
-   Sleep(300)
-   Send("!f")
-   Sleep(300)
-   Send("p")
-   Sleep(300)
-   Send("o")
-   Sleep(300)
-   Send("{TAB}{RIGHT}{LEFT}{SPACE}")
-   WinActivate("TCC Service Desk Officer - TechnologyOne Enterprise Suite")
-   Send("Light Blue")
-   Send("^s")
-   Sleep(300)
-EndIf
+; Open CES and P&R
+Run(@ComSpec & " /c " & '"D:\Users\dsh\Desktop\TechOneCES.lnk"', @TempDir, @SW_HIDE)
+Run(@ComSpec & " /c " & '"D:\Users\dsh\Desktop\TechOneP&R.lnk"', @TempDir, @SW_HIDE)
 
 ; Open Snagit
 Run("C:\Program Files (x86)\TechSmith\Snagit 11\Snagit32")
@@ -190,6 +161,10 @@ EndIf
 If WinExists("Interaction Client: .NET Edition") Then
    WinMove("Interaction Client: .NET Edition", "", $aPos[0] + $aPos[2] /3 - 655, $aPos[1], 655, $aPos[3])
 EndIf
+
+; Run ININ Shortcuts script
+MsgBox(64, "ININ Shortcuts", 'Click Ok to run "ININ Shortcuts" script.')
+Run(@ComSpec & " /c " & '""D:\Users\dsh\Desktop\ININ_Shortcuts.lnk""', "", @SW_HIDE)
 
 ; Run Text Replacements script
 MsgBox(64, "Text Replacements", 'Click Ok to run "Text Replacements" script.')
